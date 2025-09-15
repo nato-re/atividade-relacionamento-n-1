@@ -52,22 +52,23 @@ class AlbumMusicTest extends TestCase
     /** @test */
     public function music_index_route_lists_album_name()
     {
-    $album = Album::factory()->create();
-    $music = Music::factory()->create(['album_id' => $album->id]);
-    $response = $this->get('/music');
-    $response->assertStatus(200);
-    $response->assertSee($album->name);
+        $album = Album::factory()->create();
+        $music = Music::factory()->create(['album_id' => $album->id]);
+        $response = $this->get('/music');
+        $response->assertStatus(200);
+        $response->assertSee($album->name);
+        $response->assertSee($album->url_img);
     }
 
     /** @test */
     public function album_show_lists_its_musics()
     {
-    $album = Album::factory()->create();
-    $music1 = Music::factory()->create(['album_id' => $album->id]);
-    $music2 = Music::factory()->create(['album_id' => $album->id]);
-    $response = $this->get('/albums/' . $album->id);
-    $response->assertStatus(200);
-    $response->assertSee($music1->name);
-    $response->assertSee($music2->name);
+        $album = Album::factory()->create();
+        $music1 = Music::factory()->create(['album_id' => $album->id]);
+        $music2 = Music::factory()->create(['album_id' => $album->id]);
+        $response = $this->get('/albums/' . $album->id);
+        $response->assertStatus(200);
+        $response->assertSee($music1->name);
+        $response->assertSee($music2->name);
     }
 }

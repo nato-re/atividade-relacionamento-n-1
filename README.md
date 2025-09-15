@@ -25,8 +25,8 @@ Praticar o desenvolvimento de rotas, controladores, migrations e relacionamentos
 - O teste automatizado verifica se o relacionamento está funcional.
 
 ### 4. Listagem de músicas exibindo o nome do álbum
-- Na rota `/music`, cada música listada deve exibir o nome do álbum correspondente.
-- O teste automatizado verifica se o nome do álbum aparece na listagem.
+- Na rota `/music`, cada música listada deve exibir o nome e imagem do álbum correspondentes.
+- O teste automatizado verifica se o nome e imagem do álbum aparecem na listagem.
 
 ### 5. Exibição de músicas de um álbum
 - No método `show` do controller de álbuns, exiba todas as músicas pertencentes ao álbum selecionado.
