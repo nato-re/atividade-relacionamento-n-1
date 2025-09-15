@@ -1,4 +1,4 @@
-# Projeto MusicLaravelCRUD — Rúbricas e Requisitos
+# Projeto MusicLaravelCRUD — N:1
 
 Este projeto é um CRUD de músicas e álbuns em Laravel, com foco em boas práticas de modelagem, relacionamento e cobertura de testes automatizados. O objetivo é garantir que as operações de criação, leitura, atualização e exclusão estejam corretas, bem como a implementação adequada de relacionamentos entre as entidades.
 
