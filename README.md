@@ -1,53 +1,53 @@
-# Projeto MusicLaravelCRUD
+# Projeto MusicLaravelCRUD — Rúbricas e Requisitos
 
-Este projeto é um CRUD (Create, Read, Update, Delete) de músicas desenvolvido em Laravel. Ele permite cadastrar, listar, editar, visualizar e excluir registros de músicas, cada uma com os campos: título, artista, álbum, ano e gênero. O projeto já possui testes automatizados para as operações de edição, atualização e exclusão.
+Este projeto é um CRUD de músicas e álbuns em Laravel, com foco em boas práticas de modelagem, relacionamento e cobertura de testes automatizados. O objetivo é garantir que as operações de criação, leitura, atualização e exclusão estejam corretas, bem como a implementação adequada de relacionamentos entre as entidades.
 
-## Objetivo
+## Objetivo≈
 
-O objetivo deste exercício é praticar o desenvolvimento de rotas e controladores no Laravel, garantindo que as operações de edição, atualização e exclusão estejam corretas e passem nos testes automatizados fornecidos.
+Praticar o desenvolvimento de rotas, controladores, migrations e relacionamentos no Laravel, garantindo que todas as funcionalidades estejam cobertas por testes automatizados.
 
+## Rúbricas dos Requisitos
 
-## Requisitos para a(o) estudante
+### 1. Migration da tabela albums
+- Crie uma migration para a tabela `albums` contendo as colunas: `id`, `name`, `year`, `url_img`, `created_at`, `updated_at`.
+- Certifique-se de que a migration está registrada e pode ser migrada normalmente.
+- O teste automatizado valida a existência da tabela e das colunas.
 
-Implemente as rotas e métodos necessários para que as operações de editar, atualizar e deletar músicas funcionem corretamente. Para ser aprovado, seu código deve passar nos testes automatizados já presentes no projeto. Siga atentamente as orientações de cada requisito:
+### 2. Migration da tabela musics com relação a albums
+- Adicione a coluna `album_id` na migration de `musics`.
+- Implemente a constraint de chave estrangeira relacionando `album_id` com a tabela `albums`.
+- O teste automatizado verifica a existência da coluna e da relação.
 
-### Requisito 1: Rota e método de edição (edit)
-- Crie uma rota GET para `/music/{music}/edit` apontando para o método `edit` do controlador.
-- No método `edit`, busque a música pelo parâmetro recebido e retorne a view de edição, enviando o objeto da música para a view.
-- Certifique-se de que o formulário de edição seja preenchido automaticamente com os dados atuais da música.
-- Os campos do formulário devem ter seu atributo `name` como estão os seguintes: `title` (título), `artist` (artista), `album` (álbum), `year` (ano) e `genre` (gênero).
-- Dica: utilize o método `findOrFail` e a função `compact` para enviar dados para a view.
-- O teste `test_edit_view_displays_music_data` deve passar se a view exibir corretamente os dados da música selecionada.
+### 3. Relacionamento N:1 entre Album e Music
+- Implemente o relacionamento nas models:
+	- `Album` deve ter o método `musics()` (hasMany).
+	- `Music` deve ter o método `album()` (belongsTo).
+- O teste automatizado verifica se o relacionamento está funcional.
 
-### Requisito 2: Rota e método de atualização (update)
-- Crie uma rota PUT para `/music/{music}` apontando para o método `update` do controlador.
-- No método `update`, valide os dados recebidos do formulário e atualize o registro correspondente no banco de dados.
-- Os campos que devem ser atualizados são: `title` (título), `artist` (artista), `album` (álbum), `year` (ano) e `genre` (gênero).
-- Após atualizar, redirecione para a listagem de músicas (`music.index`) e exiba uma mensagem de sucesso.
-- Dica: utilize o método `update` do Eloquent e a função `redirect()->route()`.
-- O teste `test_update_music` deve passar se a atualização for realizada corretamente e o redirecionamento ocorrer.
+### 4. Listagem de músicas exibindo o nome do álbum
+- Na rota `/music`, cada música listada deve exibir o nome do álbum correspondente.
+- O teste automatizado verifica se o nome do álbum aparece na listagem.
 
-### Requisito 3: Rota e método de exclusão (delete)
-- Crie uma rota DELETE para `/music/{music}` apontando para o método `destroy` do controlador.
-- No método `destroy`, remova o registro da música do banco de dados.
-- Após a exclusão, redirecione para a listagem de músicas (`music.index`) e exiba uma mensagem de sucesso.
-- Dica: utilize o método `delete` do Eloquent.
-- O teste `test_delete_music` deve passar se a exclusão for realizada corretamente e o redirecionamento ocorrer.
+### 5. Exibição de músicas de um álbum
+- No método `show` do controller de álbuns, exiba todas as músicas pertencentes ao álbum selecionado.
+- O teste automatizado valida se as músicas do álbum são exibidas corretamente.
 
 ## Como executar os testes
 
-Para verificar se sua implementação está correta, execute os testes automatizados com o comando abaixo no terminal, na raiz do projeto:
+Execute os testes automatizados para garantir que sua implementação está correta:
 
 ```bash
-php artisan test --filter=MusicCrudTest
+php artisan test --filter=AlbumMusicTest
 ```
 
 Todos os testes devem passar para que sua solução seja considerada válida.
 
 ## Dicas
-- Utilize o recurso de rotas nomeadas do Laravel para facilitar os redirecionamentos.
-- Siga o padrão RESTful para a implementação das rotas e métodos.
-- Consulte os testes em `tests/Feature/MusicCrudTest.php` para entender o comportamento esperado.
+- Utilize factories para criar instâncias de `Album` e `Music` nos testes e seeders.
+- Siga o padrão RESTful para rotas e controllers.
+- Consulte os testes em `tests/Feature/AlbumMusicTest.php` para entender o comportamento esperado.
+- Use migrations para garantir a estrutura correta do banco de dados.
+- Implemente os relacionamentos Eloquent conforme a documentação oficial do Laravel.
 
-Bons estudos!
+Bons estudos e boa implementação!
 
