@@ -6,6 +6,10 @@ Este projeto é um CRUD de músicas e álbuns em Laravel, com foco em boas prát
 
 Praticar o desenvolvimento de rotas, controladores, migrations e relacionamentos no Laravel, garantindo que todas as funcionalidades estejam cobertas por testes automatizados.
 
+## Antes de começar
+
+Execute `composer install` para instalar as dependências do projeto, e `php artisan migrate --seed` para criar e popular as tabelas.
+
 ## Rúbricas dos Requisitos
 
 ### 1. Migration da tabela albums
