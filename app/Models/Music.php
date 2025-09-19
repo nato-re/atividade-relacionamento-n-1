@@ -9,6 +9,7 @@ class Music extends Model
 {
     /** @use HasFactory<\Database\Factories\MusicFactory> */
     use HasFactory;
+    protected $table = "musics";
 
     protected $fillable = [
         'title',
