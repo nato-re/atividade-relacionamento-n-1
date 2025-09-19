@@ -12,6 +12,9 @@ class MusicSeeder extends Seeder
      */
     public function run(): void
     {
-    \App\Models\Music::factory(10)->create();
+    $albumIds = \App\Models\Album::pluck('id');
+    \App\Models\Music::factory(10)->create([
+        'album_id' => $albumIds->random(),
+    ]);
     }
 }

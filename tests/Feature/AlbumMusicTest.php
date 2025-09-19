@@ -32,7 +32,7 @@ class AlbumMusicTest extends TestCase
         // 2. Test the foreign key constraint
         // We expect an exception when we try to create a music
         // with an album_id that does not exist in the albums table.
-        $this->expectException(QueryException::class, );
+        $this->expectException(QueryException::class);
     
         // This will try to insert a record with a non-existent album_id (e.g., 9999)
         Music::create([
@@ -46,12 +46,10 @@ class AlbumMusicTest extends TestCase
 
     public function album_music_models_have_n_to_1_relationship()
     {
-    $album = Album::factory()->create();
-    $music = Music::factory()->create(['album_id' => $album->id]);
-    $music = Music::find($music->id)::with('albums');
-    dd($music->album);
-    $this->assertEquals($album->id, $music->album->id);
-    $this->assertTrue($album->musics->contains($music));
+        $album = Album::factory()->create();
+        $music = Music::factory()->create(['album_id' => $album->id]);
+        $this->assertEquals($album->id, $music->album->id);
+        $this->assertTrue($album->musics->contains($music));
     }
     #[Test]
 
