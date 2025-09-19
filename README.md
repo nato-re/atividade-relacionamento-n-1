@@ -29,7 +29,7 @@ Execute `composer install` para instalar as dependências do projeto, e `php art
 - O teste automatizado verifica se o relacionamento está funcional.
 
 ### 4. Listagem de músicas exibindo o nome do álbum
-- Na rota `/music`, cada música listada deve exibir o nome e imagem do álbum correspondentes.
+- Na rota `/musics`, cada música listada deve exibir o nome e imagem do álbum correspondentes.
 - O teste automatizado verifica se o nome e imagem do álbum aparecem na listagem.
 
 ### 5. Exibição de músicas de um álbum
