@@ -33,7 +33,7 @@ Execute `composer install` para instalar as dependências do projeto, e `php art
 - O teste automatizado verifica se o nome e imagem do álbum aparecem na listagem.
 
 ### 5. Exibição de detalhes de um álbum juntamente com suas músicas `GET /albums/{album}`
-- Crie uma _AlbumController_, em seu método `show` , exiba todas as músicas pertencentes ao álbum selecionado.
+- Crie uma `AlbumController`, em seu método `show` , exiba todas as músicas pertencentes ao álbum selecionado, registre o método `show` na rota correspondete.
 - Dica: use uma view que receba música e use o relacionamento com a Model de Album, para acessar as as músicas.
 - O teste automatizado valida se as músicas do álbum são exibidas corretamente.
 
